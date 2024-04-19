@@ -1,16 +1,18 @@
-const express = require('express');
-
-const app = express();
+import app from "./app.js";
 const port = 3010;
 
-app.use(express.json());
-
 app.get('/', (req, res) => {
-  res.send({
-    time: new Date(),
-  });
+  try {
+    res.send({
+      // time: new Date(),
+      "hola": "klk"
+    });
+    console.log("hola mundo con express")
+  } catch (error) {
+    res.send(error)
+  }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(() => {
+  console.log(`Example app listening`);
 });
