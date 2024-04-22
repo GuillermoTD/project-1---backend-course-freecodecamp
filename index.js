@@ -3,27 +3,30 @@ const port = 3000;
 
 // Handle the root path (`/api`) to return the current date and time
 app.get('/api', (req, res) => {
-  try {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleString("en-US", {
-      weekday: "short",
-      month: "short",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      timeZone: "UTC",
-      hour12: false // Use 24-hour format
-    });
+  res.send({
+    unix:new Date().getTime()
+  })
+  // try {
+  //   const currentDate = new Date();
+  //   const formattedDate = currentDate.toLocaleString("en-US", {
+  //     weekday: "short",
+  //     month: "short",
+  //     year: "numeric",
+  //     hour: "numeric",
+  //     minute: "numeric",
+  //     second: "numeric",
+  //     timeZone: "UTC",
+  //     hour12: false // Use 24-hour format
+  //   });
 
-    res.send({
-      unix: currentDate.getTime(),
-      utc: formattedDate + " GMT" // Append "GMT" explicitly
-    });
-  } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).send({ message: "Internal Server Error" }); // Send a more informative error response
-  }
+  //   res.send({
+  //     unix: currentDate.getTime(),
+  //     utc: formattedDate + " GMT" // Append "GMT" explicitly
+  //   });
+  // } catch (error) {
+  //   console.error(error); // Log the error for debugging
+  //   res.status(500).send({ message: "Internal Server Error" }); // Send a more informative error response
+  // }
 });
 
 // Handle requests with a date parameter (`/api/:date`)
