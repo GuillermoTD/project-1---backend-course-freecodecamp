@@ -22,7 +22,7 @@ app.get('/api', (req, res) => {
     });
   } catch (error) {
     console.error(error); // Log the error for debugging
-    res.status(500).send({ message: "Internal Server Error" }); // Send a more informative error response
+    res.status(500).send({ error: "Invalid date" }); // Send a more informative error response
   }
 });
 
